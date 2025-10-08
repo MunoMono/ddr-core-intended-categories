@@ -1,13 +1,31 @@
-import { Header, HeaderName, HeaderGlobalBar } from '@carbon/react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import {
+  Header,
+  HeaderName,
+  HeaderGlobalBar,
+  HeaderGlobalAction,
+} from "@carbon/react";
+import { Moon, Sun } from "@carbon/icons-react";
 
-function HeaderBar() {
+function HeaderBar({ theme, toggleTheme }) {
+  const isDark = theme === "g90";
+  const base = import.meta.env.BASE_URL || "/";
+
   return (
-    <Header aria-label="RCA DDR Core Intended Categories">
-      <HeaderName as={Link} to="/" prefix="RCA DDR">
-        Core Intended Categories
+    <Header aria-label="DDR Core Intended Categories">
+      <HeaderName href={base} prefix="">
+        Graham Newman ddr core (intended) categories
       </HeaderName>
-      <HeaderGlobalBar />
+      <HeaderGlobalBar>
+        <HeaderGlobalAction
+          aria-label={isDark ? "Switch to light theme" : "Switch to dark theme"}
+          onClick={toggleTheme}
+          tooltipAlignment="end"
+          title={isDark ? "Light mode" : "Dark mode"}
+        >
+          {isDark ? <Sun size={20} aria-hidden="true" /> : <Moon size={20} aria-hidden="true" />}
+        </HeaderGlobalAction>
+      </HeaderGlobalBar>
     </Header>
   );
 }

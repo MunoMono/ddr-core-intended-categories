@@ -1,20 +1,14 @@
-import { Breadcrumb, BreadcrumbItem } from '@carbon/react';
-import { Link, useLocation } from 'react-router-dom';
+import { Breadcrumb, BreadcrumbItem } from '@carbon/react'
+import { Link } from 'react-router-dom'
 
-function Crumb() {
-  const location = useLocation();
-  const parts = location.pathname.split('/').filter(Boolean);
-
+export default function Crumb({ trail = [] }) {
   return (
     <Breadcrumb noTrailingSlash>
-      <BreadcrumbItem>
-        <Link to="/">Home</Link>
-      </BreadcrumbItem>
-      {parts.map((part, index) => (
-        <BreadcrumbItem key={index}>{part}</BreadcrumbItem>
+      {trail.map((t, i) => (
+        <BreadcrumbItem key={i} isCurrentPage={t.isCurrentPage}>
+          {t.to && !t.isCurrentPage ? <Link to={t.to}>{t.label}</Link> : t.label}
+        </BreadcrumbItem>
       ))}
     </Breadcrumb>
-  );
+  )
 }
-
-export default Crumb;

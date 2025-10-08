@@ -1,12 +1,118 @@
-// DDR Core Intended Categories — Carbon base styles
-@use '@carbon/react';
-@use '@carbon/react/scss/spacing';
-@use '@carbon/react/scss/type';
-@use '@carbon/react/scss/theme';
+/* ============================================================
+   RCA DDR — Core Intended Categories
+   Carbon Sass bootstrap + custom theme extensions
+   ============================================================ */
 
-body {
-  font-family: 'IBM Plex Sans', sans-serif;
-  background-color: theme.$background;
-  color: theme.$text-primary;
-  margin: spacing.$spacing-05;
+/* ------------------------------
+   1. Carbon design system imports
+   ------------------------------ */
+@use '@carbon/styles/scss/reset';
+@use '@carbon/styles/scss/type' as type;
+@use '@carbon/styles/scss/spacing' as *;
+@use '@carbon/styles/scss/colors' as colors;
+@use '@carbon/styles/scss/themes' as *;
+@use '@carbon/styles/scss/theme';
+
+/* ------------------------------
+   2. Local partials
+   ------------------------------ */
+@use './carbon_markdown';
+@use './typography';
+
+/* ------------------------------
+   3. Reset + type baseline
+   ------------------------------ */
+@include reset.reset();
+@include type.reset();
+
+/* ------------------------------
+   4. Theme variables
+   Default: g10 (light)
+   Toggle <html data-theme="g90"> or "g100" for dark variants
+   ------------------------------ */
+:root {
+  @include theme.theme($g10);
 }
+html[data-theme='g90']  { @include theme.theme($g90); }
+html[data-theme='g100'] { @include theme.theme($g100); }
+
+/* ------------------------------
+   5. Base element styling
+   ------------------------------ */
+body {
+  margin: 0;
+  @include type.type-style('body-01');
+  color: var(--cds-text-primary);
+  background: var(--cds-background);
+  font-family: 'IBM Plex Sans', system-ui, -apple-system,
+               'Segoe UI', Roboto, Arial, sans-serif;
+}
+
+/* ------------------------------
+   6. Diagram + accent variables
+   These extend Carbon color tokens for diagrams and state colors
+   ------------------------------ */
+:root {
+  --sm-accent-strategy: #{colors.$magenta-40};
+  --sm-accent-input:    #{colors.$blue-40};
+  --sm-accent-method:   #{colors.$purple-40};
+  --sm-accent-fuse:     #{colors.$teal-40};
+
+  /* status colors */
+  --sm-accent-warn:     #{colors.$yellow-40};
+  --sm-accent-error:    #{colors.$red-40};
+  --sm-accent-success:  #{colors.$green-40};
+
+  /* diagram neutrals */
+  --sm-node-fill:       var(--cds-layer);
+  --sm-node-border:     var(--cds-border-subtle);
+  --sm-node-text:       var(--cds-text-primary);
+}
+
+/* ------------------------------
+   7. Canvas / panel helper
+   ------------------------------ */
+.diagram-canvas {
+  background: var(--sm-node-fill);
+  color: var(--sm-node-text);
+  border: 1px solid var(--sm-node-border);
+  border-radius: 12px;
+  box-shadow:
+    0 1px 0 0 var(--cds-border-subtle),
+    0 2px 6px 0 rgba(0,0,0,.08);
+}
+
+/* ------------------------------
+   8. Local reusable classes
+   ------------------------------ */
+
+/* Figure / caption block */
+.figure {
+  display: grid;
+  gap: $spacing-03;
+
+  &__image {
+    width: 100%;
+    height: auto;
+    display: block;
+    border: 1px solid var(--cds-border-subtle);
+    background: var(--cds-layer);
+    border-radius: 4px;
+  }
+
+  &__caption {
+    color: var(--cds-text-secondary);
+  }
+}
+
+/* Card grid layout */
+.cardGrid {
+  display: grid;
+  gap: $spacing-06;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  padding: $spacing-07 $spacing-05;
+}
+
+/* ============================================================
+   End of DDR Core Intended Categories style sheet
+   ============================================================ */
