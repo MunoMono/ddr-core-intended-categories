@@ -1,0 +1,12 @@
+// DDR Core Intended Categories — Carbon base styles
+@use '@carbon/react';
+@use '@carbon/react/scss/spacing';
+@use '@carbon/react/scss/type';
+@use '@carbon/react/scss/theme';
+
+body {
+  font-family: 'IBM Plex Sans', sans-serif;
+  background-color: theme.$background;
+  color: theme.$text-primary;
+  margin: spacing.$spacing-05;
+}

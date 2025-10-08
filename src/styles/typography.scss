@@ -1,0 +1,13 @@
+@use '@carbon/react/scss/type' as type;
+
+h1, h2, h3, h4 {
+  font-family: 'IBM Plex Sans', sans-serif;
+  color: #161616;
+  margin-bottom: 0.5rem;
+}
+
+p {
+  @include type.type-style('body-long-02');
+  color: #393939;
+  line-height: 1.5;
+}
