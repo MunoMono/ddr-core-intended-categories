@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { HashRouter as Router, Routes, Route } from "react-router-dom"; // ✅ HashRouter for GH Pages
 import HeaderBar from "./components/HeaderBar";
 import Crumb from "./components/Crumb";
 import Home from "./pages/Home";
@@ -13,7 +13,7 @@ function App() {
     setTheme((prev) => (prev === "g10" ? "g90" : "g10"));
   };
 
-  // update data-theme attribute for SCSS variables
+  // Update data-theme attribute for SCSS variables
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
   }, [theme]);
