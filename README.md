@@ -1,16 +1,44 @@
-# React + Vite
+# 🎓 DDR Core Intended Categories
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> *“Mapping the institutional DNA of design research.”*
 
-Currently, two official plugins are available:
+This repository forms the **structural and institutional backbone** of the  
+**RCA Department of Design Research (DDR)** project corpus (1962 – 1981).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+It defines the *core intended categories* — units, people, funders, periods, and project structures — that underpin the wider **DDR Taxonomic Dataset**.  
+Together, these provide the groundwork for comparative analysis of research methods, epistemic stances, and institutional design genealogies.
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🧠 Intent
 
-## Expanding the ESLint configuration
+This repo represents the **core dataset layer** of the DDR taxonomy:  
+- 🏛 *Structural / Institutional* → official project metadata from the V&A DDR archive  
+- 🧩 *Taxonomic* → controlled vocabulary for DDR/DEU categorisation  
+- 🧭 *Analytical spine* → foundation for residual × reflexive and extended digital enrichment layers  
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+It is also a **Carbon Design System web interface**, allowing researchers to interactively explore the data in context.
+
+---
+
+## 🌐 Live Site
+
+🔗 **https://MunoMono.github.io/ddr-core-intended-categories**
+
+Deployed via GitHub Pages.  
+Dark / light theming powered by IBM Carbon tokens.
+
+---
+
+## ⚙️ Clone & Run Locally
+
+```bash
+# 1️⃣ Clone the repo
+git clone https://github.com/MunoMono/ddr-core-intended-categories.git
+cd ddr-core-intended-categories
+
+# 2️⃣ Install dependencies
+npm install
+
+# 3️⃣ Start local dev server
+npm run dev
