@@ -1,19 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { HashRouter as Router, Routes, Route } from "react-router-dom"; // ✅ HashRouter for GH Pages
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
+import { Theme } from "@carbon/react";
 import HeaderBar from "./components/HeaderBar";
 import Crumb from "./components/Crumb";
 import Home from "./pages/Home";
-import { Theme } from "@carbon/react";
+import Projects from "./pages/Projects";
+import People from "./pages/People";
 import "./styles/index.scss";
 
 function App() {
   const [theme, setTheme] = useState("g10"); // g10 = light theme
+  const toggleTheme = () => setTheme((t) => (t === "g10" ? "g90" : "g10"));
 
-  const toggleTheme = () => {
-    setTheme((prev) => (prev === "g10" ? "g90" : "g10"));
-  };
-
-  // Update data-theme attribute for SCSS variables
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
   }, [theme]);
@@ -26,6 +24,8 @@ function App() {
           <Crumb />
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/projects" element={<Projects />} />
+            <Route path="/people" element={<People />} />
           </Routes>
         </main>
       </Router>

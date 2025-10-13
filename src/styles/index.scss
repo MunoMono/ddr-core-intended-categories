@@ -1,77 +1,52 @@
-/* ============================================================
+/* ============================================================================
    RCA DDR — Core Intended Categories
-   Carbon Sass bootstrap + custom theme extensions
-   ============================================================ */
+   ========================================================================= */
+@use "@carbon/styles/scss/reset";
+@use "@carbon/styles/scss/type" as type;
+@use "@carbon/styles/scss/spacing" as *;
+@use "@carbon/styles/scss/colors" as colors;
+@use "@carbon/styles/scss/themes" as *;
+@use "@carbon/styles/scss/theme";
+@use "./carbon_markdown";
+@use "./typography";
 
-/* ------------------------------
-   1. Carbon design system imports
-   ------------------------------ */
-@use '@carbon/styles/scss/reset';
-@use '@carbon/styles/scss/type' as type;
-@use '@carbon/styles/scss/spacing' as *;
-@use '@carbon/styles/scss/colors' as colors;
-@use '@carbon/styles/scss/themes' as *;
-@use '@carbon/styles/scss/theme';
-
-/* ------------------------------
-   2. Local partials
-   ------------------------------ */
-@use './carbon_markdown';
-@use './typography';
-
-/* ------------------------------
-   3. Reset + type baseline
-   ------------------------------ */
 @include reset.reset();
 @include type.reset();
 
-/* ------------------------------
-   4. Theme variables
-   Default: g10 (light)
-   Toggle <html data-theme="g90"> or "g100" for dark variants
-   ------------------------------ */
-:root {
-  @include theme.theme($g10);
-}
-html[data-theme='g90']  { @include theme.theme($g90); }
-html[data-theme='g100'] { @include theme.theme($g100); }
+/* Themes */
+:root { @include theme.theme($g10); }
+html[data-theme="g90"]  { @include theme.theme($g90); }
+html[data-theme="g100"] { @include theme.theme($g100); }
 
-/* ------------------------------
-   5. Base element styling
-   ------------------------------ */
+/* Base */
 body {
   margin: 0;
-  @include type.type-style('body-01');
+  font-family: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
   color: var(--cds-text-primary);
-  background: var(--cds-background);
-  font-family: 'IBM Plex Sans', system-ui, -apple-system,
-               'Segoe UI', Roboto, Arial, sans-serif;
+  background-color: var(--cds-background);
+  @include type.type-style("body-01");
 }
 
-/* ------------------------------
-   6. Diagram + accent variables
-   These extend Carbon color tokens for diagrams and state colors
-   ------------------------------ */
+main {
+  margin-top: 3rem; /* under fixed header */
+  padding-inline: 1rem;
+}
+
+/* DDR tokens */
 :root {
   --sm-accent-strategy: #{colors.$magenta-40};
   --sm-accent-input:    #{colors.$blue-40};
   --sm-accent-method:   #{colors.$purple-40};
   --sm-accent-fuse:     #{colors.$teal-40};
-
-  /* status colors */
   --sm-accent-warn:     #{colors.$yellow-40};
   --sm-accent-error:    #{colors.$red-40};
   --sm-accent-success:  #{colors.$green-40};
-
-  /* diagram neutrals */
-  --sm-node-fill:       var(--cds-layer);
-  --sm-node-border:     var(--cds-border-subtle);
-  --sm-node-text:       var(--cds-text-primary);
+  --sm-node-fill:   var(--cds-layer);
+  --sm-node-border: var(--cds-border-subtle);
+  --sm-node-text:   var(--cds-text-primary);
 }
 
-/* ------------------------------
-   7. Canvas / panel helper
-   ------------------------------ */
+/* Helpers */
 .diagram-canvas {
   background: var(--sm-node-fill);
   color: var(--sm-node-text);
@@ -79,18 +54,12 @@ body {
   border-radius: 12px;
   box-shadow:
     0 1px 0 0 var(--cds-border-subtle),
-    0 2px 6px 0 rgba(0,0,0,.08);
+    0 2px 6px 0 rgba(0, 0, 0, 0.08);
 }
 
-/* ------------------------------
-   8. Local reusable classes
-   ------------------------------ */
-
-/* Figure / caption block */
 .figure {
   display: grid;
   gap: $spacing-03;
-
   &__image {
     width: 100%;
     height: auto;
@@ -99,13 +68,9 @@ body {
     background: var(--cds-layer);
     border-radius: 4px;
   }
-
-  &__caption {
-    color: var(--cds-text-secondary);
-  }
+  &__caption { color: var(--cds-text-secondary); }
 }
 
-/* Card grid layout */
 .cardGrid {
   display: grid;
   gap: $spacing-06;
@@ -113,6 +78,97 @@ body {
   padding: $spacing-07 $spacing-05;
 }
 
-/* ============================================================
-   End of DDR Core Intended Categories style sheet
-   ============================================================ */
+/* Search + Button */
+.cds--search {
+  margin-left: 1.25rem;
+  margin-bottom: 1.5rem;
+  max-width: 480px;
+}
+.download-btn {
+  margin-left: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+/* Table scroll */
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  border-radius: 4px;
+}
+.cds--data-table th,
+.cds--data-table td {
+  white-space: nowrap;
+}
+
+/* Header / SideNav responsiveness */
+@media (max-width: 768px) {
+  .cds--search {
+    width: calc(100% - 2.5rem);
+    margin-left: 1.25rem;
+    margin-right: 1.25rem;
+  }
+  header.cds--header { padding-inline: 1rem; }
+  main { margin-top: 4rem; }
+}
+
+/* Hide hamburger + SideNav on desktop (Carbon breakpoint ~1056px) */
+@media (min-width: 1056px) {
+  .mobile-menu-btn { display: none !important; }
+  .responsive-sidenav { display: none !important; }
+}
+/* Align search + button horizontally */
+.search-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-left: 1.25rem;
+  margin-bottom: 1.5rem;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: stretch;
+    margin-left: 1rem;
+    margin-right: 1rem;
+
+    .cds--search,
+    .download-btn {
+      width: 100%;
+    }
+  }
+}
+
+/* ============================================================================
+   Sticky Table Header (Carbon-aligned)
+   Keeps table headers visible during scroll
+   ========================================================================== */
+
+.table-container {
+  position: relative;
+  overflow-x: auto;
+  overflow-y: auto;
+  max-height: 75vh; /* adjustable for your layout */
+  border-radius: 4px;
+
+  /* subtle inset shadow to indicate scrollable area */
+  box-shadow: inset 0 -1px 0 var(--cds-border-subtle);
+}
+
+.cds--data-table thead th {
+  position: sticky;
+  top: 0;
+  background: var(--cds-layer);
+  z-index: 2;
+  border-bottom: 1px solid var(--cds-border-strong);
+  box-shadow: 0 1px 0 var(--cds-border-subtle);
+}
+
+/* Optional subtle shadow when scrolled down */
+.table-container::after {
+  content: "";
+  position: sticky;
+  top: 0;
+  display: block;
+  height: 1px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  pointer-events: none;
+}
