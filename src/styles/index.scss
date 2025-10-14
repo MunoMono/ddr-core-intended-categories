@@ -9,6 +9,10 @@
 @use "@carbon/styles/scss/theme";
 @use "./carbon_markdown";
 @use "./typography";
+@use "./charts";
+@use "./charts_economist";
+
+
 
 @include reset.reset();
 @include type.reset();
