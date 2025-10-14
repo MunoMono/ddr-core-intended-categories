@@ -1,5 +1,10 @@
 import React from "react";
-import { Download, Maximize2, FileSpreadsheet, Image } from "lucide-react";
+import {
+  Download,
+  Maximize,
+  DocumentExport,
+  Image as ImageIcon,
+} from "@carbon/icons-react";
 
 export default function ChartControls({ svgRef, data, title }) {
   const exportPNG = () => {
@@ -27,7 +32,7 @@ export default function ChartControls({ svgRef, data, title }) {
   };
 
   const exportCSV = () => {
-    const csv = data.map(d => d.join(",")).join("\n");
+    const csv = data.map((d) => d.join(",")).join("\n");
     const blob = new Blob([csv], { type: "text/csv" });
     const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
@@ -39,23 +44,43 @@ export default function ChartControls({ svgRef, data, title }) {
 
   const toggleFullscreen = () => {
     const el = svgRef.current;
-    if (!document.fullscreenElement) el.requestFullscreen();
+    if (!document.fullscreenElement && el) el.requestFullscreen();
     else document.exitFullscreen();
   };
 
   return (
     <div className="chart-controls flex gap-2 justify-end items-center mt-2">
-      <button className="chart-btn" onClick={toggleFullscreen} title="Expand">
-        <Maximize2 size={16} />
+      <button
+        className="chart-btn"
+        onClick={toggleFullscreen}
+        title="Expand"
+        aria-label="Expand chart"
+      >
+        <Maximize size={20} />
       </button>
-      <button className="chart-btn" onClick={exportPNG} title="Download PNG">
-        <Image size={16} />
+      <button
+        className="chart-btn"
+        onClick={exportPNG}
+        title="Download PNG"
+        aria-label="Download PNG"
+      >
+        <ImageIcon size={20} />
       </button>
-      <button className="chart-btn" onClick={exportCSV} title="Download CSV">
-        <FileSpreadsheet size={16} />
+      <button
+        className="chart-btn"
+        onClick={exportCSV}
+        title="Download CSV"
+        aria-label="Download CSV"
+      >
+        <DocumentExport size={20} />
       </button>
-      <button className="chart-btn" onClick={() => window.print()} title="Export PDF">
-        <Download size={16} />
+      <button
+        className="chart-btn"
+        onClick={() => window.print()}
+        title="Export PDF"
+        aria-label="Export PDF"
+      >
+        <Download size={20} />
       </button>
     </div>
   );
