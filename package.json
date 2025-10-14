@@ -13,9 +13,13 @@
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
+    "@carbon/charts": "^1.27.0",
     "@carbon/icons-react": "^11.68.0",
-    "@carbon/react": "^1.92.1",
+    "@carbon/react": "^1.93.0",
     "carbon-components": "^10.59.2",
+    "d3": "^7.9.0",
+    "html-to-image": "^1.11.13",
+    "jspdf": "^3.0.3",
     "papaparse": "^5.5.3",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
