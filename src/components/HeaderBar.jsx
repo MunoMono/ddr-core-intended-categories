@@ -56,6 +56,13 @@ export default function HeaderBar({ theme, toggleTheme }) {
               >
                 People
               </HeaderMenuItem>
+                            <HeaderMenuItem
+                as={Link}
+                to="/analysis"
+                isActive={location.pathname === "/analysis"}
+              >
+                Analysis
+              </HeaderMenuItem>
             </HeaderNavigation>
 
             <HeaderGlobalBar>
@@ -85,6 +92,9 @@ export default function HeaderBar({ theme, toggleTheme }) {
               </SideNavMenuItem>
               <SideNavMenuItem as={Link} to="/people" onClick={onClickSideNavExpand}>
                 People
+              </SideNavMenuItem>
+                            <SideNavMenuItem as={Link} to="/analysis" onClick={onClickSideNavExpand}>
+                Analysis
               </SideNavMenuItem>
             </SideNavItems>
           </SideNav>

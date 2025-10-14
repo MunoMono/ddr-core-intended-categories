@@ -29,41 +29,36 @@ export default function People() {
     <Content>
       <Grid fullWidth>
         <Column lg={12} md={8} sm={4}>
-          <h1>Compiled by Bruce Archer 26 February 1998, revised 14 April 1998. 12 March 1999</h1>
+          <h1>
+            Compiled by Bruce Archer 26 February 1998, revised 14 April 1998, 12 March 1999
+          </h1>
 
-          {/* Search + Download CSV actions */}
-          <div className="search-actions">
-            <Search
-              id="people-search"
-              labelText="Search people"
-              placeholder="Search people..."
-              size="lg"
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              className="responsive-search"
-            />
+          <Search
+            id="people-search"
+            labelText="Search people"
+            placeholder="Type to filter..."
+            size="lg"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            className="responsive-search"
+          />
 
-            <Button
-              kind="tertiary"
-              size="sm"
-              renderIcon={Download}
-              onClick={() => handleDownload(filtered, "people.csv")}
-              className="download-btn"
-            >
-              Download CSV
-            </Button>
-          </div>
+          <Button
+            kind="tertiary"
+            size="sm"
+            renderIcon={Download}
+            onClick={() => handleDownload(filtered, "ddr_staff.csv")}
+            className="download-btn"
+          >
+            Download CSV
+          </Button>
 
-          {/* Table */}
           <div className="table-container">
             <DataTable
               rows={tableRows}
               headers={headers}
               render={({ rows, headers, getHeaderProps, getTableProps }) => (
-                <table
-                  {...getTableProps()}
-                  className="cds--data-table cds--data-table--zebra"
-                >
+                <table {...getTableProps()} className="cds--data-table cds--data-table--zebra">
                   <thead>
                     <tr>
                       {headers.map((h) => (
@@ -77,9 +72,7 @@ export default function People() {
                     {rows.map((r) => (
                       <tr key={r.id}>
                         {headers.map((h) => {
-                          const v = r.cells.find(
-                            (c) => c.info.header === h.key
-                          )?.value;
+                          const v = r.cells.find((c) => c.info.header === h.key)?.value;
                           return <td key={h.key}>{highlight(v, query)}</td>;
                         })}
                       </tr>

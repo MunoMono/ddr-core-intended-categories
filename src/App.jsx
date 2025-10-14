@@ -6,6 +6,7 @@ import Crumb from "./components/Crumb";
 import Home from "./pages/Home";
 import Projects from "./pages/Projects";
 import People from "./pages/People";
+import Analysis from "./pages/Analysis";
 import "./styles/index.scss";
 
 function App() {
@@ -26,6 +27,8 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/projects" element={<Projects />} />
             <Route path="/people" element={<People />} />
+            <Route path="/analysis" element={<Analysis />} />
+
           </Routes>
         </main>
       </Router>
