@@ -1,194 +1,81 @@
-/* ============================================================================
-   RCA DDR — Core Intended Categories
-   ========================================================================= */
-@use "@carbon/styles/scss/reset";
-@use "@carbon/styles/scss/type" as type;
-@use "@carbon/styles/scss/spacing" as *;
-@use "@carbon/styles/scss/colors" as colors;
-@use "@carbon/styles/scss/themes" as *;
-@use "@carbon/styles/scss/theme";
-@use "./carbon_markdown";
-@use "./typography";
-
 /* --------------------------------------------------
-   1. Base Reset + Type
+   9. Charts (D3 + Carbon Skin)
 -------------------------------------------------- */
-@include reset.reset();
-@include type.reset();
 
-/* --------------------------------------------------
-   2. Themes
--------------------------------------------------- */
-:root { @include theme.theme($g10); }
-html[data-theme="g90"]  { @include theme.theme($g90); }
-html[data-theme="g100"] { @include theme.theme($g100); }
-
-/* --------------------------------------------------
-   3. Body + Layout
--------------------------------------------------- */
-body {
-  margin: 0;
-  font-family: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-  color: var(--cds-text-primary);
-  background-color: var(--cds-background);
-  @include type.type-style("body-01");
-}
-
-main {
-  margin-top: 3rem; /* below header */
-  padding-inline: 1rem;
-  max-width: 100%;
-}
-
-/* --------------------------------------------------
-   4. DDR Accent Tokens
--------------------------------------------------- */
-:root {
-  --sm-accent-strategy: #{colors.$magenta-40};
-  --sm-accent-input:    #{colors.$blue-40};
-  --sm-accent-method:   #{colors.$purple-40};
-  --sm-accent-fuse:     #{colors.$teal-40};
-
-  --sm-accent-warn:     #{colors.$yellow-40};
-  --sm-accent-error:    #{colors.$red-40};
-  --sm-accent-success:  #{colors.$green-40};
-
-  --sm-node-fill:   var(--cds-layer);
-  --sm-node-border: var(--cds-border-subtle);
-  --sm-node-text:   var(--cds-text-primary);
-}
-
-/* --------------------------------------------------
-   5. Helpers (Canvas, Figures, Cards)
--------------------------------------------------- */
-.diagram-canvas {
-  background: var(--sm-node-fill);
-  color: var(--sm-node-text);
-  border: 1px solid var(--sm-node-border);
-  border-radius: 12px;
-  box-shadow:
-    0 1px 0 0 var(--cds-border-subtle),
-    0 2px 6px 0 rgba(0, 0, 0, 0.08);
-}
-
-.figure {
-  display: grid;
-  gap: $spacing-03;
-
-  &__image {
-    width: 100%;
-    height: auto;
-    border: 1px solid var(--cds-border-subtle);
-    background: var(--cds-layer);
-    border-radius: 4px;
-  }
-
-  &__caption { color: var(--cds-text-secondary); }
-}
-
-.cardGrid {
-  display: grid;
-  gap: $spacing-06;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  padding: $spacing-07 $spacing-05;
-}
-
-/* --------------------------------------------------
-   6. Search + Button Layout
--------------------------------------------------- */
-.search-actions {
+/**
+ * Basic chart container – inherits Carbon layer colors
+ */
+.chart-container {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  margin-left: 1.25rem;
-  margin-bottom: 1.5rem;
-
-  .cds--search {
-    max-width: 480px;
-  }
-
-  .download-btn {
-    flex-shrink: 0;
-  }
-
-  @media (max-width: 768px) {
-    flex-direction: column;
-    align-items: stretch;
-    margin-inline: 1rem;
-
-    .cds--search,
-    .download-btn {
-      width: 100%;
-    }
-  }
-}
-
-/* --------------------------------------------------
-   7. Table Container (full-width + sticky header)
--------------------------------------------------- */
-.table-container {
-  width: 100%;
-  overflow-x: auto;
-  overflow-y: visible;
-  border-radius: 4px;
-  margin: 0;
-  box-shadow: inset 0 -1px 0 var(--cds-border-subtle);
-
-  /* Expand to full grid width on desktop */
-  @media (min-width: 1056px) {
-    margin-inline: calc(-1.5rem);
-  }
-}
-
-.table-container table {
-  width: 100%;
-  border-collapse: collapse;
-  table-layout: fixed;
-}
-
-.table-container th,
-.table-container td {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  padding: 0.75rem 1rem;
-}
-
-/* Sticky Header Fix */
-.cds--data-table thead th {
-  position: sticky;
-  top: 0;
+  justify-content: center;
   background: var(--cds-layer);
-  z-index: 3;
-  border-bottom: 1px solid var(--cds-border-strong);
-}
+  border: 1px solid var(--cds-border-subtle);
+  border-radius: 8px;
+  padding: $spacing-06;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  transition: background-color 0.2s ease, border-color 0.2s ease;
 
-/* Optional subtle shadow at scroll */
-.table-container::after {
-  content: "";
-  position: sticky;
-  top: 0;
-  height: 1px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-  pointer-events: none;
-}
-
-/* --------------------------------------------------
-   8. Responsive Header + Nav
--------------------------------------------------- */
-@media (max-width: 768px) {
-  header.cds--header { padding-inline: 1rem; }
-  main { margin-top: 4rem; }
-}
-
-/* Hide mobile SideNav on desktop */
-@media (min-width: 1056px) {
-  .mobile-menu-btn,
-  .responsive-sidenav {
-    display: none !important;
+  svg {
+    font-family: "IBM Plex Sans", system-ui, sans-serif;
   }
 }
 
-/* ============================================================================
-   End of DDR Core Intended Categories stylesheet
-   ========================================================================= */
+/**
+ * Axes, ticks, and labels – use Carbon text tokens
+ */
+.chart-axis line,
+.chart-axis path {
+  stroke: var(--cds-border-subtle);
+}
+
+.chart-axis text {
+  fill: var(--cds-text-secondary);
+  font-size: 0.75rem;
+}
+
+/**
+ * Bars, dots, lines – use Carbon data palette tokens
+ */
+.bar {
+  fill: var(--cds-interactive-01);
+  transition: fill 0.2s ease, opacity 0.2s ease;
+
+  &:hover {
+    fill: var(--cds-interactive-hover);
+    opacity: 0.85;
+    cursor: pointer;
+  }
+}
+
+.line {
+  stroke: var(--cds-interactive-01);
+  stroke-width: 2px;
+  fill: none;
+}
+
+/**
+ * Chart labels (value text)
+ */
+.chart-label {
+  fill: var(--cds-text-secondary);
+  font-size: 0.75rem;
+}
+
+/**
+ * Tooltip skinning for D3 HTML tooltips
+ */
+.d3-tooltip {
+  position: absolute;
+  background: var(--cds-layer);
+  color: var(--cds-text-primary);
+  border: 1px solid var(--cds-border-subtle);
+  border-radius: 4px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  padding: $spacing-03 $spacing-04;
+  font-size: 0.75rem;
+  pointer-events: none;
+  transition: opacity 0.1s ease;
+  opacity: 0;
+  z-index: 10;
+}
