@@ -75,7 +75,7 @@ export default function DonutChart({ data = [], title }) {
       .attr("fill", "#333")
       .style("font-size", "1.1rem")
       .style("font-weight", 600)
-      .text(`${total} total`);
+      .text(`${total} total funders`);
 
     const [topName, topVal] = sorted[0];
     svg.append("text")
@@ -89,7 +89,7 @@ export default function DonutChart({ data = [], title }) {
     <div>
       <div ref={ref} className="chart-container" />
       <ChartControls svgRef={ref} data={data} title={title} />
-      <ChartLegend title="Top Categories" items={legendItems} align="center" />
+      <ChartLegend title="Top funding categories" items={legendItems} align="center" />
     </div>
   );
 }

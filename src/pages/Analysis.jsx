@@ -85,6 +85,41 @@ export default function Analysis() {
     );
   }, []);
 
+  const charts = [
+    {
+      comp: (
+        <BarChart
+          data={data.roleCounts}
+          title="Staff by role"
+          color="var(--cds-interactive-01)"
+        />
+      ),
+    },
+    {
+      comp: <LineChart data={data.activeCounts} title="Active staff over time" />,
+    },
+    {
+      comp: (
+        <BarChart
+          data={data.projCounts}
+          title="Projects per year"
+          color="var(--cds-support-success)"
+        />
+      ),
+    },
+    { comp: <DonutChart data={data.funders} title="Top funders" /> },
+    {
+      comp: (
+        <BarChart
+          data={data.leads}
+          title="Top project leads"
+          horizontal
+          color="var(--cds-interactive-03)"
+        />
+      ),
+    },
+  ];
+
   return (
     <Content>
       <Grid fullWidth>
@@ -95,31 +130,12 @@ export default function Analysis() {
             animations.
           </p>
 
-          {[
-            {
-              comp: <BarChart data={data.roleCounts} title="Staff by role" color="var(--cds-interactive-01)" />,
-            },
-            {
-              comp: <LineChart data={data.activeCounts} title="Active staff over time" />,
-            },
-            {
-              comp: <BarChart data={data.projCounts} title="Projects per year" color="var(--cds-support-success)" />,
-            },
-            {
-              comp: <DonutChart data={data.funders} title="Top funders" />,
-            },
-            {
-              comp: (
-                <BarChart
-                  data={data.leads}
-                  title="Top project leads"
-                  horizontal
-                  color="var(--cds-interactive-03)"
-                />
-              ),
-            },
-          ].map((chart, i) => (
-            <Tile key={i} className="chart-tile" style={{ marginTop: "1.5rem", padding: "1rem" }}>
+          {charts.map((chart, i) => (
+            <Tile
+              key={i}
+              className="chart-tile"
+              style={{ marginTop: "1.5rem", padding: "1rem" }}
+            >
               <div className="chart-wrapper">{chart.comp}</div>
             </Tile>
           ))}
