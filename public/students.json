@@ -1,0 +1,328 @@
+{
+  "ref_students": [
+    {
+      "label": "Andrew, G.",
+      "year": 1984,
+      "degree": "MA",
+      "thesis_title": "Design and multidimensional representation: an explanation of the problems of representing and interpreting multivariate data using graphical and computer graphics"
+    },
+    {
+      "label": "Beheshti, R.",
+      "year": 1981,
+      "degree": "PhD",
+      "thesis_title": "The role of politics and citizen participation in designing the built environment"
+    },
+    {
+      "label": "Boreham, D.",
+      "year": 1983,
+      "degree": "PhD",
+      "thesis_title": "Man computer perception of pictorial characteristics in unstructured grayscale raster images"
+    },
+    {
+      "label": "Childs, M.S.",
+      "year": 1984,
+      "degree": "MA",
+      "thesis_title": "Development of an automatic orientation and position sensing device: an application of microprocessors in design"
+    },
+    {
+      "label": "Colson, S.",
+      "year": 1982,
+      "degree": "MA",
+      "thesis_title": "Computer graphics and media technology: an examination of sane current developments"
+    },
+    {
+      "label": "Cornforth, C.",
+      "year": 1976,
+      "degree": "MA",
+      "thesis_title": "Towards the development of a model of the architectural design activity (with indications for the design activity in general)"
+    },
+    {
+      "label": "Crouch, A.",
+      "year": 1983,
+      "degree": "PhD",
+      "thesis_title": "The creative hand: an investigation into the cognitive capacity for design"
+    },
+    {
+      "label": "Daniel, M.",
+      "year": 1983,
+      "degree": "MA",
+      "thesis_title": "A design feasibility study for information presentation in financial trading environment"
+    },
+    {
+      "label": "Eltes, A.",
+      "year": 1964,
+      "degree": "MA",
+      "thesis_title": "The metaphor as an example of thought processes in creativity"
+    },
+    {
+      "label": "Esterhuizen, J.",
+      "year": 1983,
+      "degree": "PhD",
+      "thesis_title": "Art and practice; an investigation into the cognitive capacity for design"
+    },
+    {
+      "label": "Finkelstein, R.",
+      "year": 1984,
+      "degree": "MA",
+      "thesis_title": "An investigation of sane factors affecting the loss of computers for image making"
+    },
+    {
+      "label": "Ford, E.",
+      "year": 1980,
+      "degree": "MA",
+      "thesis_title": "Investigation of the thermal benefits of an attached greenhouse to an existing terrace house"
+    },
+    {
+      "label": "Freeman, D.",
+      "year": 1974,
+      "degree": "MA",
+      "thesis_title": "The accident and emergency department: a study of environment"
+    },
+    {
+      "label": "Gomez, A.",
+      "year": 1975,
+      "degree": "MA",
+      "thesis_title": "A Contribution to curriculum development in design education with special reference to the case of Chile"
+    },
+    {
+      "label": "Hall, J.",
+      "year": 1975,
+      "degree": "MA",
+      "thesis_title": "The development of a compact hygiene unit for the disabled and able bodied"
+    },
+    {
+      "label": "Hardy, P.",
+      "year": 1979,
+      "degree": "MA",
+      "thesis_title": "A study of teaching of design at undergraduate level in mechanical engineering- degree courses of British universities and polytechnics"
+    },
+    {
+      "label": "Hargreaves, G.",
+      "year": 1981,
+      "degree": "MA",
+      "thesis_title": "A study of the conduct of the early stages of two product design projects originating in the public sector"
+    },
+    {
+      "label": "Harrison, G.",
+      "year": 1978,
+      "degree": "MA",
+      "thesis_title": "A comparative study of of design theory and school workshop based projects and their relevance as a means of developing design 'capacity'"
+    },
+    {
+      "label": "Henrion, M.",
+      "year": 1974,
+      "degree": "MA",
+      "thesis_title": "Notes on the synthesis of problem formulations used by human designers and automatic systems"
+    },
+    {
+      "label": "Hooper, T.",
+      "year": 1982,
+      "degree": "MA",
+      "thesis_title": "Viewdata utilization and its behavioral influences- an aspect of information technology"
+    },
+    {
+      "label": "Hulme, A.J.",
+      "year": 1977,
+      "degree": "MDes",
+      "thesis_title": "The design of ashipping control room for the port of London involving the development of -work stations .-which will contribute to the long term health of the operators"
+    },
+    {
+      "label": "Johnson, C.",
+      "year": 1977,
+      "degree": "MA",
+      "thesis_title": "Computer aids in the design process: towards the development of computer aided equipment design"
+    },
+    {
+      "label": "Johnstone, G.",
+      "year": 1983,
+      "degree": "MA",
+      "thesis_title": "A philosophical examination of creativity in art ^<design and game playing: implications for theory of mind"
+    },
+    {
+      "label": "Lawson, D,",
+      "year": 1982,
+      "degree": "MDes",
+      "thesis_title": "Hie preparation and evaluation of maps constructed to selected principles through the use of computer modelling techniques with seme general findings"
+    },
+    {
+      "label": "Leigh, R.M.",
+      "year": 1973,
+      "degree": "MA",
+      "thesis_title": "Link systems and other programs; a study of a computer network system as a means of communication and exchange"
+    },
+    {
+      "label": "Lera, S.",
+      "year": 1980,
+      "degree": "PhD",
+      "thesis_title": "Designer's values and the evaluation of design"
+    },
+    {
+      "label": "Lindner, M.",
+      "year": 1984,
+      "degree": "PhD",
+      "thesis_title": "A contribution to the development of design methods adapted for the improvement of user safety, with special regards to patient and operator safety in use of medical technology"
+    },
+    {
+      "label": "Lippold, J.O.",
+      "year": 1980,
+      "degree": "MA",
+      "thesis_title": "An exercise in the utilisation of inexpensive computing power in the design of medical diagnostic equipment"
+    },
+    {
+      "label": "Little, S.E.",
+      "year": 1983,
+      "degree": "PhD",
+      "thesis_title": "A  longitudinal study of strategic choice in complex organisations through the examination of technical development in the design activity"
+    },
+    {
+      "label": "Lopez, J.M.",
+      "year": 1980,
+      "degree": "MA",
+      "thesis_title": "Socio-economic aspects of industrial design: a contribution to the development of research in this area at the National Autonomous University of Mexico"
+    },
+    {
+      "label": "Novitzky, A.",
+      "year": 1966,
+      "degree": "MA",
+      "thesis_title": "Aspects of design in"
+    },
+    {
+      "label": "O' Grady, J.K.",
+      "year": 1975,
+      "degree": "MA",
+      "thesis_title": "Study and design of kitchen systems for disabled users"
+    },
+    {
+      "label": "Payne, R.",
+      "year": 1979,
+      "degree": "MA",
+      "thesis_title": "An investigation into the design activity in children with particular attention to its problem solving aspects"
+    },
+    {
+      "label": "Perera, N.N.",
+      "year": 1978,
+      "degree": "MA",
+      "thesis_title": "Towards the development of systems framework;ork for low income housing design(with special reference to the third world-Sri Lanka)"
+    },
+    {
+      "label": "Robertson, D.A.",
+      "year": 1979,
+      "degree": "MA",
+      "thesis_title": "Microprocessor application: some implications for industrial design"
+    },
+    {
+      "label": "Robertson, W.K.",
+      "year": 1983,
+      "degree": "PhD",
+      "thesis_title": "Scientific progress and the explanation of human behaviour: an evaluation of the role of scientific models in design research"
+    },
+    {
+      "label": "Robertson, W.K.",
+      "year": 1978,
+      "degree": "MA",
+      "thesis_title": "A contribution towards a methodology by which design may be studied"
+    },
+    {
+      "label": "Rudge, A.P.",
+      "year": 1983,
+      "degree": "MA",
+      "thesis_title": "The development of routines for enhanced manipulation of complex images: the investigation of graphic subroutines for a microcomputer at assembly language level"
+    },
+    {
+      "label": "Scott, M.",
+      "year": 1977,
+      "degree": "MA",
+      "thesis_title": "Production design and control"
+    },
+    {
+      "label": "Seannon, J.",
+      "year": 1978,
+      "degree": "MA",
+      "thesis_title": "Research project for a craft workstation for handicapped children"
+    },
+    {
+      "label": "Sharman, N.",
+      "year": 1981,
+      "degree": "MA",
+      "thesis_title": "Transformational theory: a linguistic paradigm for the ability to innovate in object perception: a contribution to an understanding of the capacity for design"
+    },
+    {
+      "label": "Simons, T.",
+      "year": 1978,
+      "degree": "MA",
+      "thesis_title": "Environmental education:computer modelling and the participant citizen"
+    },
+    {
+      "label": "Smith, B.R.",
+      "year": 1977,
+      "degree": "MA",
+      "thesis_title": "A contribution to the understanding of the pattern of designer computer interaction in the early stages of the design process"
+    },
+    {
+      "label": "Smith, J.F.",
+      "year": 1983,
+      "degree": "PhD",
+      "thesis_title": "The typographical model of the design process: a critique of positivist methodology"
+    },
+    {
+      "label": "Stansall, P.J.",
+      "year": 1973,
+      "degree": "MA",
+      "thesis_title": "A contribution towards the development of models of thought processes underlying the design activity"
+    },
+    {
+      "label": "Steele, C.",
+      "year": 1982,
+      "degree": "MA",
+      "thesis_title": "The architect's apprentice: the application of expert systems techniques to the early stages of the architectural design process"
+    },
+    {
+      "label": "Stone, F.",
+      "year": 1979,
+      "degree": "MA",
+      "thesis_title": "An investigation of some factors influencing the design of audio teleconference systems, th conference room environment and attitudes towards the audio system"
+    },
+    {
+      "label": "Suarez, M.I.",
+      "year": 1980,
+      "degree": "MA",
+      "thesis_title": "A study of possible contributions from psychology to industrial design curriculum (with special reference to the National Autonomous University of Mexico)"
+    },
+    {
+      "label": "Taylor, F.",
+      "year": 1978,
+      "degree": "MA",
+      "thesis_title": "A psychological approach to the problems of aids and equipment for the physically handicapped"
+    },
+    {
+      "label": "Tealer, M.",
+      "year": 1978,
+      "degree": "MA",
+      "thesis_title": "Design decision making and the role of computer modelling"
+    },
+    {
+      "label": "Terrins, D.",
+      "year": 1983,
+      "degree": "MA",
+      "thesis_title": "Cognitive connectivity: the interplay between thought processes and representational media"
+    },
+    {
+      "label": "Turnock, P.",
+      "year": 1978,
+      "degree": "MDes",
+      "thesis_title": "An evaluation of the decisions made through the major design project-the redesign of the Baker Perkins B30 dough divider"
+    },
+    {
+      "label": "Wilson, W.R.",
+      "year": 1980,
+      "degree": "MA",
+      "thesis_title": "Some methodological considerations for the empirical study of design and design activity"
+    },
+    {
+      "label": "Wright, J.",
+      "year": 1983,
+      "degree": "MA",
+      "thesis_title": "Factors affecting management decision making in product innovation"
+    }
+  ]
+}

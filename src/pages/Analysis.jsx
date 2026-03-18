@@ -12,11 +12,17 @@ export default function Analysis() {
     projCounts: [],
     funders: [],
     leads: [],
+    studentCounts: [],
   });
 
   useEffect(() => {
-    Promise.all([d3.csv("ddr_staff.csv"), d3.csv("va_ddr_projects.csv")]).then(
-      ([staff, projects]) => {
+    const base = import.meta.env.BASE_URL || "/";
+
+    Promise.all([
+      d3.csv("ddr_staff.csv"),
+      d3.csv("va_ddr_projects.csv"),
+      d3.json(`${base}students.json`).catch(() => null),
+    ]).then(([staff, projects, studentsJson]) => {
         const parseYear = (str) => {
           if (!str) return null;
           const m = str.match(/\d{4}/g);
@@ -80,9 +86,20 @@ export default function Analysis() {
           .sort((a, b) => d3.descending(a[1], b[1]))
           .slice(0, 10);
 
-        setData({ roleCounts, activeCounts, projCounts, funders, leads });
-      }
-    );
+        const studentRecords = Array.isArray(studentsJson)
+          ? studentsJson
+          : studentsJson?.ref_students || studentsJson?.students || studentsJson?.data || [];
+
+        const studentCounts = d3
+          .rollups(
+            (studentRecords || []).filter((d) => d.year),
+            (v) => v.length,
+            (d) => +d.year
+          )
+          .sort((a, b) => a[0] - b[0]);
+
+        setData({ roleCounts, activeCounts, projCounts, funders, leads, studentCounts });
+      });
   }, []);
 
   const charts = [
@@ -92,6 +109,20 @@ export default function Analysis() {
           data={data.roleCounts}
           title="Staff by role"
           color="var(--cds-interactive-01)"
+          legendTitle="Staff roles"
+          valueLabel="staff"
+        />
+      ),
+    },
+    {
+      comp: (
+        <BarChart
+          data={data.studentCounts}
+          title="Students by year"
+          color="var(--cds-interactive-04)"
+          legendTitle="Student years"
+          valueLabel="students"
+          sort="label-asc"
         />
       ),
     },

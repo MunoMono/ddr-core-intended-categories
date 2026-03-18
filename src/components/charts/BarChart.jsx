@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import * as d3 from "d3";
 import ChartLegend from "./ChartLegend";
 import ChartControls from "./ChartControls";
@@ -9,9 +9,34 @@ export default function BarChart({
   title,
   color = "#276FBF",
   horizontal = false,
+  legendTitle = "Categories",
+  valueLabel = "items",
+  sort = "value-desc", // value-desc | value-asc | label-asc | none
 }) {
   const ref = useRef();
   const [legendItems, setLegendItems] = useState([]);
+
+  const sortData = (arr, mode) => {
+    const copy = Array.isArray(arr) ? [...arr] : [];
+    switch (mode) {
+      case "value-asc":
+        return copy.sort((a, b) => a[1] - b[1]);
+      case "label-asc":
+        return copy.sort((a, b) => {
+          const aNum = Number(a[0]);
+          const bNum = Number(b[0]);
+          if (!Number.isNaN(aNum) && !Number.isNaN(bNum)) return aNum - bNum;
+          return String(a[0]).localeCompare(String(b[0]));
+        });
+      case "none":
+        return copy;
+      case "value-desc":
+      default:
+        return copy.sort((a, b) => b[1] - a[1]);
+    }
+  };
+
+  const sortedData = useMemo(() => sortData(data, sort), [data, sort]);
 
   useEffect(() => {
     if (!data.length) return;
@@ -35,7 +60,7 @@ export default function BarChart({
       .style("opacity", 0);
 
     // data prep
-    const sorted = [...data].sort((a, b) => b[1] - a[1]);
+    const sorted = sortedData;
     const [maxLabel, maxValue] = sorted[0];
     const xDomain = horizontal
       ? [0, d3.max(sorted, (d) => d[1])]
@@ -91,7 +116,7 @@ export default function BarChart({
       .on("mouseover", (event, d) => {
         tooltip.transition().duration(150).style("opacity", 1);
         tooltip
-          .html(`<strong>${d[0]}</strong><br/>${d[1]} staff`)
+          .html(`<strong>${d[0]}</strong><br/>${d[1]} ${valueLabel}`)
           .style("left", `${event.offsetX + 12}px`)
           .style("top", `${event.offsetY - 28}px`);
         d3.select(event.currentTarget).style("fill-opacity", 1);
@@ -141,29 +166,27 @@ export default function BarChart({
       .attr("y", 25)
       .attr("class", "chart-title")
       .text(title);
-  }, [data, title, color, horizontal]);
+  }, [data, title, color, horizontal, valueLabel, sort, sortedData]);
 
-  const topRole = data?.[0]?.[0];
-  const topValue = data?.[0]?.[1];
-  const sorted = [...data].sort((a, b) => b[1] - a[1]);
+  const sorted = sortedData;
+  const topRole = sorted?.[0]?.[0];
+  const topValue = sorted?.[0]?.[1];
   const [maxLabel, maxValue] = sorted[0] || ["N/A", 0];
 
   return (
     <div className="chart-block">
       <div ref={ref} className="chart-container" />
       <ChartControls svgRef={ref} data={data} title={title} />
-      <ChartLegend title="Staff Roles" items={legendItems} align="left" />
+      <ChartLegend title={legendTitle} items={legendItems} align="left" />
 
       {data.length ? (
         <>
           <p className="chart-insight">
-            The <strong>{topRole}</strong> role dominates with{" "}
-            <strong>{topValue}</strong> staff, indicating a concentration of
-            departmental expertise.
+            The leading category is <strong>{topRole}</strong> with{" "}
+            <strong>{topValue}</strong> {valueLabel}.
           </p>
-          {/* ✅ visible annotation below chart */}
           <p className="chart-annotation">
-            Most common: <strong>{maxLabel}</strong> ({maxValue})
+            Most common: <strong>{maxLabel}</strong> ({maxValue} {valueLabel})
           </p>
         </>
       ) : (
